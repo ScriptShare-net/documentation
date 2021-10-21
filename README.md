@@ -1,4 +1,4 @@
 # SSCore Docs
 Documentation for SSCore Framework
 
-Click [here]() to go to the docs
+Click [here](https://github.com/ScriptShare-net/ss-docs/wiki) to go to the docs
