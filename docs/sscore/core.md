@@ -6,27 +6,6 @@
 
 ---
 
-### sharedObject
-
-There is 2 ways to get this object externally but interally you can just use "SS.".
-
-#### Usage 1
-
-```lua
-SS = {}
-CreateThread(function()
-	TriggerEvent('SS:sharedObject', function(obj) SS = obj end)
-end)
-```
-
-#### Usage 2
-
-```lua
-SS = exports["SSCore"]:sharedObject()
-```
-
----
-
 ### GetPlayerIdentifiers
 
 This function returns all the players identifiers. The function takes two arguments. The first being the players source and the second is the callback to run once it has collected the identifiers. The function will return a table with the below values:
@@ -49,8 +28,9 @@ PermID - This is the unique id generated when someone joins the server (This sta
 #### Usage
 
 ```lua
-SS.GetPlayerIdentifiers(source, function(identifiers)
-	print(json.encode(identifiers))
+local SSCore = exports['SSCore']
+SSCore:GetUserIdentifiers(source, function(ids)
+	print(json.encode(ids))
 end)
 ```
 
@@ -63,7 +43,8 @@ This function takes a string as its argument and will print the string in consol
 #### Usage
 
 ```lua
-SS.Alert("This function works")
+local SSCore = exports['SSCore']
+SSCore:Alert("This function works")
 ```
 
 ---
@@ -75,7 +56,7 @@ This function gets the character object that is created when a user selects or c
 #### Usage
 
 ```lua
-local xPlayer = SS.GetCharacterFromSource(source)
+local xPlayer = exports['SSCore']:GetCharacterFromSource(source)
 ```
 
 ---
@@ -87,7 +68,7 @@ This function gets the PermID from the players identifier. This takes one argume
 #### Usage
 
 ```lua
-local PermID = SS.GetPermIDFromIdentifier(identifier)
+local PermID = exports['SSCore']:GetPermIDFromIdentifier(identifier)
 ```
 
 ---
@@ -99,7 +80,8 @@ This function allows you to create a callback on the server that can be called f
 #### Usage
 
 ```lua
-SS.RegisterServerCallback("TestCallback", function(cb)
+local SSCore = exports['SSCore']
+SSCore:RegisterServerCallback("TestCallback", function(cb)
 	local xPlayer = SS.GetCharacterFromSource(source)
 	cb(xPlayer)
 end)
