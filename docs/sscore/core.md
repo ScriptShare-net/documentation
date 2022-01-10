@@ -82,7 +82,7 @@ This function allows you to create a callback on the server that can be called f
 ```lua
 local SSCore = exports['SSCore']
 SSCore:RegisterServerCallback("TestCallback", function(cb)
-	local xPlayer = SS.GetCharacterFromSource(source)
+	local xPlayer = SSCore:GetCharacterFromSource(source)
 	cb(xPlayer)
 end)
 ```
